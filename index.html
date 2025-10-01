@@ -234,16 +234,9 @@
             transform: translateY(-1px) scale(0.98);
         }
 
-        /* Add RSVP icon */
+        /* Remove RSVP icon */
         .cta-button::after {
-            content: '📝';
-            margin-left: 0.8rem;
-            font-size: 1.1rem;
-            transition: transform 0.3s ease;
-        }
-
-        .cta-button:hover::after {
-            transform: translateX(2px);
+            content: '';
         }
 
         /* Elegant Countdown Timer */
@@ -847,9 +840,252 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        /* Surreal & Comical Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+        }
+
+        @keyframes pulse-crazy {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05) rotate(1deg); }
+        }
+
+        @keyframes rainbow-shift {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        @keyframes bounce-in {
+            0% { transform: scale(0) rotate(-180deg); }
+            50% { transform: scale(1.2) rotate(10deg); }
+            100% { transform: scale(1) rotate(0deg); }
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px) rotate(-1deg); }
+            75% { transform: translateX(5px) rotate(1deg); }
+        }
+
+        @keyframes swim {
+            0% { transform: translateX(0) translateY(0) rotate(0deg); }
+            25% { transform: translateX(10px) translateY(-10px) rotate(5deg); }
+            50% { transform: translateX(0) translateY(-20px) rotate(0deg); }
+            75% { transform: translateX(-10px) translateY(-10px) rotate(-5deg); }
+            100% { transform: translateX(0) translateY(0) rotate(0deg); }
+        }
+
+        @keyframes jello {
+            0%, 100% { transform: skewX(0deg) skewY(0deg); }
+            30% { transform: skewX(25deg) skewY(-25deg); }
+            40% { transform: skewX(-15deg) skewY(15deg); }
+            50% { transform: skewX(15deg) skewY(-15deg); }
+            65% { transform: skewX(-5deg) skewY(5deg); }
+            75% { transform: skewX(5deg) skewY(-5deg); }
+        }
+
+        /* Apply surreal animations */
+        .hero-content .names {
+            animation: pulse-crazy 3s ease-in-out infinite, wiggle 6s ease-in-out infinite;
+        }
+
+        .cta-button {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .cta-button:hover {
+            animation: jello 0.8s ease-in-out, shake 0.5s ease-in-out infinite;
+        }
+
+        .time-unit {
+            animation: bounce-in 0.6s ease-out;
+            animation-delay: calc(var(--delay) * 0.1s);
+        }
+
+        .time-unit:hover {
+            animation: swim 2s ease-in-out infinite;
+        }
+
+        .timeline-item {
+            animation: bounce-in 0.8s ease-out;
+            animation-delay: calc(var(--delay) * 0.15s);
+        }
+
+        .timeline-item:hover {
+            animation: wiggle 0.5s ease-in-out infinite;
+        }
+
+        .detail-card:hover {
+            animation: pulse-crazy 0.5s ease-in-out infinite;
+        }
+
+        .showcase-item:hover img {
+            animation: rainbow-shift 3s linear infinite;
+            transform: scale(1.1) rotate(2deg);
+        }
+
+        .logo {
+            animation: wiggle 4s ease-in-out infinite;
+        }
+
+        .logo:hover {
+            animation: jello 0.6s ease-in-out;
+        }
+
+        /* Floating decorative elements */
+        .hero::after {
+            content: '✨';
+            position: absolute;
+            font-size: 3rem;
+            top: 20%;
+            left: 10%;
+            animation: swim 8s ease-in-out infinite;
+            opacity: 0.6;
+        }
+
+        .countdown::before {
+            content: '🎊';
+            position: absolute;
+            font-size: 4rem;
+            top: 10%;
+            right: 10%;
+            animation: float 5s ease-in-out infinite;
+            opacity: 0.5;
+        }
+
+        .countdown::after {
+            content: '🎉';
+            position: absolute;
+            font-size: 3.5rem;
+            bottom: 15%;
+            left: 5%;
+            animation: wiggle 4s ease-in-out infinite;
+            opacity: 0.5;
+        }
+
+        .rsvp::after {
+            content: '💍';
+            position: absolute;
+            font-size: 5rem;
+            top: 15%;
+            right: 15%;
+            animation: float 6s ease-in-out infinite;
+            opacity: 0.4;
+        }
+
+        .rsvp::before {
+            content: '💐';
+            position: absolute;
+            font-size: 4rem;
+            bottom: 10%;
+            left: 10%;
+            animation: swim 7s ease-in-out infinite;
+            opacity: 0.4;
+            z-index: 1;
+        }
+
+        /* Language Selection Overlay */
+        .language-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-green), var(--light-green));
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .language-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .language-container {
+            text-align: center;
+            color: var(--text-light);
+            padding: 3rem;
+        }
+
+        .language-container h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            margin-bottom: 3rem;
+            animation: pulse-crazy 3s ease-in-out infinite;
+        }
+
+        .language-buttons {
+            display: flex;
+            gap: 3rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .language-btn {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            border: 2px solid var(--gold);
+            color: var(--text-light);
+            padding: 2rem 4rem;
+            font-size: 1.5rem;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .language-btn:hover {
+            background: var(--gold);
+            color: var(--text-dark);
+            transform: scale(1.1) rotate(2deg);
+            box-shadow: 0 15px 35px rgba(212, 175, 55, 0.5);
+            animation: jello 0.8s ease-in-out;
+        }
+
+        .language-btn:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .flag-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
     </style>
 </head>
 <body>
+    <!-- Language Selection Overlay -->
+    <div class="language-overlay" id="languageOverlay">
+        <div class="language-container">
+            <h1 class="serif-font">Choose Your Language / Válaszd ki a nyelvet</h1>
+            <div class="language-buttons">
+                <button class="language-btn" onclick="selectLanguage('en')">
+                    <span class="flag-icon">🇬🇧</span>
+                    English
+                </button>
+                <button class="language-btn" onclick="selectLanguage('hu')">
+                    <span class="flag-icon">🇭🇺</span>
+                    Magyar
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Loading Screen -->
     <div class="loading" id="loading">
         <div class="loader"></div>
@@ -891,19 +1127,19 @@
         <div class="countdown-container">
             <h2 class="serif-font">Until We Say I Do</h2>
             <div class="timer" id="timer">
-                <div class="time-unit">
+                <div class="time-unit" style="--delay: 1">
                     <span class="number serif-font" id="days">365</span>
                     <span class="label">Days</span>
                 </div>
-                <div class="time-unit">
+                <div class="time-unit" style="--delay: 2">
                     <span class="number serif-font" id="hours">0</span>
                     <span class="label">Hours</span>
                 </div>
-                <div class="time-unit">
+                <div class="time-unit" style="--delay: 3">
                     <span class="number serif-font" id="minutes">0</span>
                     <span class="label">Minutes</span>
                 </div>
-                <div class="time-unit">
+                <div class="time-unit" style="--delay: 4">
                     <span class="number serif-font" id="seconds">0</span>
                     <span class="label">Seconds</span>
                 </div>
@@ -974,27 +1210,27 @@
             <div class="timeline-section">
                 <h3>Wedding Day Timeline</h3>
                 <div class="timeline">
-                    <div class="timeline-item">
+                    <div class="timeline-item" style="--delay: 1">
                         <div class="timeline-time">3:00 PM</div>
                         <div class="timeline-event">Guest arrival and welcome cocktails on the main deck with stunning Danube views</div>
                     </div>
-                    <div class="timeline-item">
+                    <div class="timeline-item" style="--delay: 2">
                         <div class="timeline-time">4:00 PM</div>
                         <div class="timeline-event">Wedding ceremony on the top deck with Budapest's historic skyline as our backdrop</div>
                     </div>
-                    <div class="timeline-item">
+                    <div class="timeline-item" style="--delay: 3">
                         <div class="timeline-time">5:00 PM</div>
                         <div class="timeline-event">Cocktail hour and photography session as we cruise along the Danube River</div>
                     </div>
-                    <div class="timeline-item">
+                    <div class="timeline-item" style="--delay: 4">
                         <div class="timeline-time">6:30 PM</div>
                         <div class="timeline-event">Wedding dinner service begins with toasts and speeches</div>
                     </div>
-                    <div class="timeline-item">
+                    <div class="timeline-item" style="--delay: 5">
                         <div class="timeline-time">9:00 PM</div>
                         <div class="timeline-event">Dancing begins under the stars with live music and DJ</div>
                     </div>
-                    <div class="timeline-item">
+                    <div class="timeline-item" style="--delay: 6">
                         <div class="timeline-time">12:00 AM</div>
                         <div class="timeline-event">Late night celebration continues with panoramic city lights</div>
                     </div>
@@ -1084,11 +1320,280 @@
     </section>
 
     <script>
-        // Loading screen
-        window.addEventListener('load', function() {
+        // Translations
+        const translations = {
+            en: {
+                nav: {
+                    home: 'Home',
+                    details: 'Details',
+                    photos: 'Photos',
+                    rsvp: 'RSVP'
+                },
+                hero: {
+                    date: 'June 20, 2026',
+                    location: 'Budapest, Hungary',
+                    description: 'Join us for a celebration of love on the beautiful Danube River as we begin our greatest adventure together.',
+                    cta: 'RSVP'
+                },
+                countdown: {
+                    title: 'Until We Say I Do',
+                    days: 'Days',
+                    hours: 'Hours',
+                    minutes: 'Minutes',
+                    seconds: 'Seconds',
+                    married: "We're Married! 🎉"
+                },
+                details: {
+                    title: 'Wedding Details',
+                    infoTitle: 'Wedding Information',
+                    dateTimeTitle: 'Date & Time',
+                    dateText: 'Saturday, June 20, 2026',
+                    solsticeTitle: 'Summer Solstice Celebration',
+                    solsticeText: 'The longest day of the year with extended daylight hours for an unforgettable evening',
+                    ceremonyLabel: 'Ceremony:',
+                    ceremonyTime: '4:00 PM',
+                    receptionLabel: 'Reception:',
+                    receptionTime: '6:30 PM - Late',
+                    venueTitle: 'Venue',
+                    venueName: 'Spoon the Boat',
+                    venueLocation: 'Danube River, Budapest',
+                    venueDesc: 'A sophisticated floating restaurant offering panoramic views of Budapest\'s historic skyline including Buda Castle and Parliament',
+                    venueLocationLabel: 'Location:',
+                    venueLocationText: 'Central Budapest',
+                    venueStyleLabel: 'Style:',
+                    venueStyleText: 'Floating venue with multiple decks',
+                    celebrationTitle: 'Celebration Details',
+                    dressCodeTitle: 'Dress Code & Theme',
+                    attireLabel: 'Attire:',
+                    attireText: 'Formal Black Tie',
+                    themeLabel: 'Theme:',
+                    themeText: 'Verdant Green',
+                    themeDesc: 'We encourage incorporating green tones into your outfit to complement our natural theme and Budapest\'s summer setting',
+                    diningTitle: 'Dining & Entertainment',
+                    cuisineLabel: 'Cuisine:',
+                    cuisineText: 'Buffet-style reception',
+                    optionsLabel: 'Options:',
+                    optionsText: 'Hungarian & international dishes',
+                    dietaryTitle: 'Dietary accommodations available - please specify in your RSVP',
+                    musicLabel: 'Music:',
+                    musicText: 'Live music & DJ',
+                    dancingLabel: 'Dancing:',
+                    dancingText: 'From 9:00 PM onwards',
+                    timelineTitle: 'Wedding Day Timeline',
+                    timeline: [
+                        { time: '3:00 PM', event: 'Guest arrival and welcome cocktails on the main deck with stunning Danube views' },
+                        { time: '4:00 PM', event: 'Wedding ceremony on the top deck with Budapest\'s historic skyline as our backdrop' },
+                        { time: '5:00 PM', event: 'Cocktail hour and photography session as we cruise along the Danube River' },
+                        { time: '6:30 PM', event: 'Wedding dinner service begins with toasts and speeches' },
+                        { time: '9:00 PM', event: 'Dancing begins under the stars with live music and DJ' },
+                        { time: '12:00 AM', event: 'Late night celebration continues with panoramic city lights' }
+                    ]
+                },
+                photos: {
+                    title: 'Our Adventures',
+                    items: [
+                        { title: 'London Life', desc: 'Autumn walks through Greenwich with the city skyline as our backdrop' },
+                        { title: 'Forest Adventures', desc: 'Discovering new trails and pretending we\'re athletic' },
+                        { title: 'Coastal Wandering', desc: 'Mediterranean adventures and sunset hikes' },
+                        { title: 'Summit Success', desc: 'The view from the top makes all the complaining worth it' },
+                        { title: 'Spring Wandering', desc: 'Finding the perfect Instagram backdrop (and allergies)' },
+                        { title: 'Fitness Goals', desc: 'Running events where we definitely don\'t come last' }
+                    ]
+                },
+                rsvp: {
+                    title: 'Join Our Celebration',
+                    text1: 'We can\'t wait to celebrate with you in Budapest!',
+                    text2: 'Please respond by <strong>March 15, 2026</strong>. Include any dietary requirements, song requests, and the number of guests attending.',
+                    button: 'RSVP Now',
+                    questions: 'Questions? Drop us a message and we\'ll get back to you'
+                }
+            },
+            hu: {
+                nav: {
+                    home: 'Főoldal',
+                    details: 'Részletek',
+                    photos: 'Fotók',
+                    rsvp: 'Visszajelzés'
+                },
+                hero: {
+                    date: '2026. június 20.',
+                    location: 'Budapest, Magyarország',
+                    description: 'Ünnepelj velünk a gyönyörű Dunán, ahogy elkezdjük legnagyobb kalandunkat együtt.',
+                    cta: 'Visszajelzés'
+                },
+                countdown: {
+                    title: 'Addig, amíg igent mondunk',
+                    days: 'Nap',
+                    hours: 'Óra',
+                    minutes: 'Perc',
+                    seconds: 'Másodperc',
+                    married: 'Házasok vagyunk! 🎉'
+                },
+                details: {
+                    title: 'Esküvő Részletei',
+                    infoTitle: 'Esküvő Információk',
+                    dateTimeTitle: 'Dátum és Időpont',
+                    dateText: '2026. június 20., szombat',
+                    solsticeTitle: 'Nyári Napforduló Ünneplés',
+                    solsticeText: 'Az év leghosszabb napja, hosszú napfénnyel egy felejthetetlen estéhez',
+                    ceremonyLabel: 'Szertartás:',
+                    ceremonyTime: '16:00',
+                    receptionLabel: 'Vacsora:',
+                    receptionTime: '18:30 - késő',
+                    venueTitle: 'Helyszín',
+                    venueName: 'Spoon the Boat',
+                    venueLocation: 'Duna, Budapest',
+                    venueDesc: 'Egy kifinomult úszó étterem, amely páratlan kilátást nyújt Budapest történelmi látványosságaira, beleértve a Budai Várat és a Parlamentet',
+                    venueLocationLabel: 'Helyszín:',
+                    venueLocationText: 'Budapest belváros',
+                    venueStyleLabel: 'Stílus:',
+                    venueStyleText: 'Úszó helyszín több fedélzettel',
+                    celebrationTitle: 'Ünneplés Részletei',
+                    dressCodeTitle: 'Öltözködési kód és Téma',
+                    attireLabel: 'Öltözet:',
+                    attireText: 'Formális fekete nyakkendő',
+                    themeLabel: 'Téma:',
+                    themeText: 'Zamatos Zöld',
+                    themeDesc: 'Bátorítunk, hogy viselj zöld árnyalatokat az öltözékedben, hogy kiegészítsd a természetes témánkat és Budapest nyári hangulatát',
+                    diningTitle: 'Étkezés és Szórakozás',
+                    cuisineLabel: 'Konyha:',
+                    cuisineText: 'Svédasztalos vacsora',
+                    optionsLabel: 'Választék:',
+                    optionsText: 'Magyar és nemzetközi ételek',
+                    dietaryTitle: 'Étkezési igények figyelembe vétele - kérjük, jelezd a visszajelzésedben',
+                    musicLabel: 'Zene:',
+                    musicText: 'Élő zene és DJ',
+                    dancingLabel: 'Tánc:',
+                    dancingText: '21:00-tól kezdve',
+                    timelineTitle: 'Esküvő Napi Időbeosztás',
+                    timeline: [
+                        { time: '15:00', event: 'Vendégek érkezése és üdvözlő koktélok a főfedélzeten lenyűgöző Duna kilátással' },
+                        { time: '16:00', event: 'Esküvői szertartás a felső fedélzeten Budapest történelmi panorámájával a hátterünkben' },
+                        { time: '17:00', event: 'Koktél óra és fotózás, ahogy hajózunk a Dunán' },
+                        { time: '18:30', event: 'Az esküvői vacsora kezdete köszöntőkkel és beszédekkel' },
+                        { time: '21:00', event: 'A tánc kezdete a csillagok alatt élő zenével és DJ-vel' },
+                        { time: '00:00', event: 'Késő éjszakai ünneplés folytatódik panorámás városi fényekkel' }
+                    ]
+                },
+                photos: {
+                    title: 'Kalandjaink',
+                    items: [
+                        { title: 'Londoni Élet', desc: 'Őszi séták Greenwichben a városi látképpel a hátterünkben' },
+                        { title: 'Erdei Kalandok', desc: 'Új ösvények felfedezése és úgy teszünk, mintha sportosak lennénk' },
+                        { title: 'Tengerparti Vándorlás', desc: 'Mediterrán kalandok és naplementés túrák' },
+                        { title: 'Csúcs Siker', desc: 'A kilátás a csúcsról minden panaszkodást megér' },
+                        { title: 'Tavaszi Vándorlás', desc: 'A tökéletes Instagram háttér megtalálása (és az allergiák)' },
+                        { title: 'Fitness Célok', desc: 'Futóversenyek, ahol biztosan nem vagyunk az utolsók' }
+                    ]
+                },
+                rsvp: {
+                    title: 'Csatlakozz az Ünnepléshez',
+                    text1: 'Alig várjuk, hogy veled ünnepelhessünk Budapesten!',
+                    text2: 'Kérjük, válaszolj <strong>2026. március 15-ig</strong>. Kérjük, add meg az étkezési igényeidet, zenekéréseidet és a vendégek számát.',
+                    button: 'Visszajelzés Most',
+                    questions: 'Kérdések? Írj nekünk egy üzenetet és válaszolunk'
+                }
+            }
+        };
+
+        let currentLanguage = 'en';
+
+        // Language selection
+        function selectLanguage(lang) {
+            currentLanguage = lang;
+            document.getElementById('languageOverlay').classList.add('hidden');
+            updateContent();
+
+            // Show loading screen
             setTimeout(() => {
                 document.getElementById('loading').classList.add('fade-out');
             }, 1000);
+        }
+
+        // Update all content based on selected language
+        function updateContent() {
+            const t = translations[currentLanguage];
+
+            // Update page title
+            if (currentLanguage === 'en') {
+                document.title = 'Anna & Aangelo - Wedding in Budapest | June 20, 2026';
+            } else {
+                document.title = 'Anna és Aangelo - Esküvő Budapesten | 2026. június 20.';
+            }
+
+            // Navigation
+            document.querySelectorAll('.nav-menu a')[0].textContent = t.nav.home;
+            document.querySelectorAll('.nav-menu a')[1].textContent = t.nav.details;
+            document.querySelectorAll('.nav-menu a')[2].textContent = t.nav.photos;
+            document.querySelectorAll('.nav-menu a')[3].textContent = t.nav.rsvp;
+
+            // Hero
+            document.querySelector('.hero .date').textContent = t.hero.date;
+            document.querySelector('.hero .location').textContent = t.hero.location;
+            document.querySelector('.hero .description').textContent = t.hero.description;
+            document.querySelectorAll('.cta-button')[0].textContent = t.hero.cta;
+
+            // Countdown
+            document.querySelector('.countdown h2').textContent = t.countdown.title;
+            document.querySelector('#days').nextElementSibling.textContent = t.countdown.days;
+            document.querySelector('#hours').nextElementSibling.textContent = t.countdown.hours;
+            document.querySelector('#minutes').nextElementSibling.textContent = t.countdown.minutes;
+            document.querySelector('#seconds').nextElementSibling.textContent = t.countdown.seconds;
+
+            // Details
+            document.querySelector('.details .section-title').textContent = t.details.title;
+            document.querySelectorAll('.detail-card h3')[0].textContent = t.details.infoTitle;
+            document.querySelectorAll('.detail-section h4')[0].textContent = t.details.dateTimeTitle;
+            document.querySelectorAll('.detail-section p strong')[0].textContent = t.details.dateText;
+            document.querySelector('.highlight-box strong').textContent = t.details.solsticeTitle;
+            document.querySelector('.highlight-box strong').nextSibling.textContent = t.details.solsticeText;
+
+            const ceremonyP = document.querySelectorAll('.detail-section p')[1];
+            ceremonyP.innerHTML = `<strong>${t.details.ceremonyLabel}</strong> ${t.details.ceremonyTime}<br><strong>${t.details.receptionLabel}</strong> ${t.details.receptionTime}`;
+
+            document.querySelectorAll('.detail-section h4')[1].textContent = t.details.venueTitle;
+            document.querySelectorAll('.detail-section')[1].querySelectorAll('p')[0].innerHTML = `<strong>${t.details.venueName}</strong><br>${t.details.venueLocation}`;
+            document.querySelectorAll('.highlight-box p')[1].textContent = t.details.venueDesc;
+            document.querySelectorAll('.detail-section')[1].querySelectorAll('p')[2].innerHTML = `<strong>${t.details.venueLocationLabel}</strong> ${t.details.venueLocationText}<br><strong>${t.details.venueStyleLabel}</strong> ${t.details.venueStyleText}`;
+
+            document.querySelectorAll('.detail-card h3')[1].textContent = t.details.celebrationTitle;
+            document.querySelectorAll('.detail-section h4')[2].textContent = t.details.dressCodeTitle;
+            document.querySelectorAll('.detail-section')[2].querySelectorAll('p')[0].innerHTML = `<strong>${t.details.attireLabel}</strong> ${t.details.attireText}`;
+            document.querySelectorAll('.detail-section')[2].querySelectorAll('p')[1].innerHTML = `<strong>${t.details.themeLabel}</strong> ${t.details.themeText}`;
+            document.querySelectorAll('.highlight-box p')[2].textContent = t.details.themeDesc;
+
+            document.querySelectorAll('.detail-section h4')[3].textContent = t.details.diningTitle;
+            document.querySelectorAll('.detail-section')[3].querySelectorAll('p')[0].innerHTML = `<strong>${t.details.cuisineLabel}</strong> ${t.details.cuisineText}<br><strong>${t.details.optionsLabel}</strong> ${t.details.optionsText}`;
+            document.querySelectorAll('.highlight-box p')[3].textContent = t.details.dietaryTitle;
+            document.querySelectorAll('.detail-section')[3].querySelectorAll('p')[2].innerHTML = `<strong>${t.details.musicLabel}</strong> ${t.details.musicText}<br><strong>${t.details.dancingLabel}</strong> ${t.details.dancingText}`;
+
+            // Timeline
+            document.querySelector('.timeline-section h3').textContent = t.details.timelineTitle;
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            t.details.timeline.forEach((item, index) => {
+                timelineItems[index].querySelector('.timeline-time').textContent = item.time;
+                timelineItems[index].querySelector('.timeline-event').textContent = item.event;
+            });
+
+            // Photos
+            document.querySelector('.photo-showcase .section-title').textContent = t.photos.title;
+            const showcaseItems = document.querySelectorAll('.showcase-item');
+            t.photos.items.forEach((item, index) => {
+                showcaseItems[index].querySelector('h3').textContent = item.title;
+                showcaseItems[index].querySelector('p').textContent = item.desc;
+            });
+
+            // RSVP
+            document.querySelector('.rsvp .section-title').textContent = t.rsvp.title;
+            document.querySelectorAll('.rsvp-content p')[0].textContent = t.rsvp.text1;
+            document.querySelectorAll('.rsvp-content p')[1].innerHTML = t.rsvp.text2;
+            document.querySelector('.rsvp-button').textContent = t.rsvp.button;
+            document.querySelectorAll('.rsvp-content p')[2].textContent = t.rsvp.questions;
+        }
+
+        // Loading screen
+        window.addEventListener('load', function() {
+            // Don't auto-hide loading screen, wait for language selection
         });
 
         // Mobile navigation
@@ -1132,7 +1637,8 @@
             document.getElementById('seconds').textContent = seconds;
 
             if (distance < 0) {
-                document.getElementById('timer').innerHTML = "<h2 style='grid-column: 1 / -1; color: var(--primary-green); font-size: 2rem;'>We're Married! 🎉</h2>";
+                const marriedText = translations[currentLanguage].countdown.married;
+                document.getElementById('timer').innerHTML = `<h2 style='grid-column: 1 / -1; color: var(--primary-green); font-size: 2rem;'>${marriedText}</h2>`;
             }
         }
 
